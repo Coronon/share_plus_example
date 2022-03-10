@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:share_plus/share_plus.dart';
 
-const String fileName = "test8.jpg";
+const String fileName = "example_dash.jpg";
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
