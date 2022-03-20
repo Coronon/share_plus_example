@@ -30,38 +30,38 @@ dependencies:
   flutter:
     sdk: flutter
   path_provider: ^2.0.9
-  share_plus: ^3.1.0
+  share_plus: ^4.0.2
 
 dependency_overrides:
   share_plus:
     git:
       url: https://github.com/Coronon/plus_plugins
-      ref: 90e17f85d9599532e7cdc4e3b23db103aaeec723
+      ref: 14e171f8244c8e1c6c9bdb4eeb6050da272adddf
       path: packages/share_plus/share_plus
   share_plus_linux:
     git:
       url: https://github.com/Coronon/plus_plugins
-      ref: 90e17f85d9599532e7cdc4e3b23db103aaeec723
+      ref: 14e171f8244c8e1c6c9bdb4eeb6050da272adddf
       path: packages/share_plus/share_plus_linux
   share_plus_macos:
     git:
       url: https://github.com/Coronon/plus_plugins
-      ref: 90e17f85d9599532e7cdc4e3b23db103aaeec723
+      ref: 14e171f8244c8e1c6c9bdb4eeb6050da272adddf
       path: packages/share_plus/share_plus_macos
   share_plus_platform_interface:
     git:
       url: https://github.com/Coronon/plus_plugins
-      ref: 90e17f85d9599532e7cdc4e3b23db103aaeec723
+      ref: 14e171f8244c8e1c6c9bdb4eeb6050da272adddf
       path: packages/share_plus/share_plus_platform_interface
   share_plus_web:
     git:
       url: https://github.com/Coronon/plus_plugins
-      ref: 90e17f85d9599532e7cdc4e3b23db103aaeec723
+      ref: 14e171f8244c8e1c6c9bdb4eeb6050da272adddf
       path: packages/share_plus/share_plus_web
   share_plus_windows:
     git:
       url: https://github.com/Coronon/plus_plugins
-      ref: 90e17f85d9599532e7cdc4e3b23db103aaeec723
+      ref: 14e171f8244c8e1c6c9bdb4eeb6050da272adddf
       path: packages/share_plus/share_plus_windows
 
 dev_dependencies:
