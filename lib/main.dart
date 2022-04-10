@@ -44,13 +44,18 @@ class HomePage extends StatelessWidget {
           child: const Text("Share"),
           onPressed: () async {
             Directory cacheDir = await getTemporaryDirectory();
-            print((await Share.shareFilesWithResult([
-                  "${cacheDir.path}/$fileName",
-                  "${cacheDir.path}/$fileName",
-                  "${cacheDir.path}/$fileName"
-                ]))
-                    .status ==
-                ShareResultStatus.success);
+            final shareUrl = await Share.shareWithResult(
+              'https://flutter.dev',
+              subject: 'Share subject',
+            );
+            print(shareUrl.raw);
+
+            final shareFiles = await Share.shareFilesWithResult([
+              "${cacheDir.path}/$fileName",
+              "${cacheDir.path}/$fileName",
+              "${cacheDir.path}/$fileName",
+            ]);
+            print(shareFiles.raw);
           },
         ),
       ),

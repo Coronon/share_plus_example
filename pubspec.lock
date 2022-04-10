@@ -209,17 +209,17 @@ packages:
     dependency: "direct main"
     description:
       path: "packages/share_plus/share_plus"
-      ref: "14e171f8244c8e1c6c9bdb4eeb6050da272adddf"
-      resolved-ref: "14e171f8244c8e1c6c9bdb4eeb6050da272adddf"
+      ref: a68486bef492b1c8451de1f47759716b0f8d909c
+      resolved-ref: a68486bef492b1c8451de1f47759716b0f8d909c
       url: "https://github.com/Coronon/plus_plugins"
     source: git
-    version: "4.0.2"
+    version: "4.0.4"
   share_plus_linux:
     dependency: "direct overridden"
     description:
       path: "packages/share_plus/share_plus_linux"
-      ref: "14e171f8244c8e1c6c9bdb4eeb6050da272adddf"
-      resolved-ref: "14e171f8244c8e1c6c9bdb4eeb6050da272adddf"
+      ref: a68486bef492b1c8451de1f47759716b0f8d909c
+      resolved-ref: a68486bef492b1c8451de1f47759716b0f8d909c
       url: "https://github.com/Coronon/plus_plugins"
     source: git
     version: "3.0.0"
@@ -227,8 +227,8 @@ packages:
     dependency: "direct overridden"
     description:
       path: "packages/share_plus/share_plus_macos"
-      ref: "14e171f8244c8e1c6c9bdb4eeb6050da272adddf"
-      resolved-ref: "14e171f8244c8e1c6c9bdb4eeb6050da272adddf"
+      ref: a68486bef492b1c8451de1f47759716b0f8d909c
+      resolved-ref: a68486bef492b1c8451de1f47759716b0f8d909c
       url: "https://github.com/Coronon/plus_plugins"
     source: git
     version: "3.0.0"
@@ -236,17 +236,17 @@ packages:
     dependency: "direct overridden"
     description:
       path: "packages/share_plus/share_plus_platform_interface"
-      ref: "14e171f8244c8e1c6c9bdb4eeb6050da272adddf"
-      resolved-ref: "14e171f8244c8e1c6c9bdb4eeb6050da272adddf"
+      ref: a68486bef492b1c8451de1f47759716b0f8d909c
+      resolved-ref: a68486bef492b1c8451de1f47759716b0f8d909c
       url: "https://github.com/Coronon/plus_plugins"
     source: git
-    version: "3.0.1"
+    version: "3.0.2"
   share_plus_web:
     dependency: "direct overridden"
     description:
       path: "packages/share_plus/share_plus_web"
-      ref: "14e171f8244c8e1c6c9bdb4eeb6050da272adddf"
-      resolved-ref: "14e171f8244c8e1c6c9bdb4eeb6050da272adddf"
+      ref: a68486bef492b1c8451de1f47759716b0f8d909c
+      resolved-ref: a68486bef492b1c8451de1f47759716b0f8d909c
       url: "https://github.com/Coronon/plus_plugins"
     source: git
     version: "3.0.0"
@@ -254,8 +254,8 @@ packages:
     dependency: "direct overridden"
     description:
       path: "packages/share_plus/share_plus_windows"
-      ref: "14e171f8244c8e1c6c9bdb4eeb6050da272adddf"
-      resolved-ref: "14e171f8244c8e1c6c9bdb4eeb6050da272adddf"
+      ref: a68486bef492b1c8451de1f47759716b0f8d909c
+      resolved-ref: a68486bef492b1c8451de1f47759716b0f8d909c
       url: "https://github.com/Coronon/plus_plugins"
     source: git
     version: "3.0.0"
