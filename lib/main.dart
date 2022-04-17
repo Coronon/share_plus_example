@@ -5,14 +5,29 @@ import 'package:flutter/material.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:share_plus/share_plus.dart';
 
-const String fileName = "example_dash.jpg";
+const String normalJPEG1 = "test_normalJPEG_1.jpg";
+const String normalJPEG2 = "test_normalJPEG_2.jpg";
+const String noExtensionJPEG = "test_noExtensionJPEG";
+const String pdfDocument = "test_pdfDocument.pdf";
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
-  await downloadImage(
+  await downloadFile(
     "https://docs.flutter.dev/assets/images/dash/Dash.png",
-    fileName,
+    normalJPEG1,
+  );
+  await downloadFile(
+    "https://docs.flutter.dev/assets/images/dash/early-dash-sketches2.jpg",
+    normalJPEG2,
+  );
+  await downloadFile(
+    "https://docs.flutter.dev/assets/images/dash/early-dash-sketches5.jpg",
+    noExtensionJPEG,
+  );
+  await downloadFile(
+    "https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf",
+    pdfDocument,
   );
 
   runApp(const MyApp());
@@ -44,18 +59,28 @@ class HomePage extends StatelessWidget {
           child: const Text("Share"),
           onPressed: () async {
             Directory cacheDir = await getTemporaryDirectory();
-            final shareUrl = await Share.shareWithResult(
-              'https://flutter.dev',
-              subject: 'Share subject',
-            );
-            print(shareUrl.raw);
 
-            final shareFiles = await Share.shareFilesWithResult([
-              "${cacheDir.path}/$fileName",
-              "${cacheDir.path}/$fileName",
-              "${cacheDir.path}/$fileName",
+            //* Single image
+            await Share.shareFilesWithResult([
+              "${cacheDir.path}/$normalJPEG1",
             ]);
-            print(shareFiles.raw);
+
+            //* Multiple images
+            // Yes, the preview stacks the two previews - look closely
+            await Share.shareFilesWithResult([
+              "${cacheDir.path}/$normalJPEG1",
+              "${cacheDir.path}/$normalJPEG2",
+            ]);
+
+            //* No Extension
+            await Share.shareFilesWithResult([
+              "${cacheDir.path}/$noExtensionJPEG",
+            ]);
+
+            //* PDF document (no image)
+            await Share.shareFilesWithResult([
+              "${cacheDir.path}/$pdfDocument",
+            ]);
           },
         ),
       ),
@@ -63,7 +88,7 @@ class HomePage extends StatelessWidget {
   }
 }
 
-Future<File> downloadImage(String url, String filename) async {
+Future<File> downloadFile(String url, String filename) async {
   var httpClient = HttpClient();
   var request = await httpClient.getUrl(Uri.parse(url));
   var response = await request.close();
