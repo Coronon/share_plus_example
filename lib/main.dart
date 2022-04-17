@@ -73,8 +73,11 @@ class HomePage extends StatelessWidget {
             ]);
 
             //* No Extension
+            // If you comment out the `mimeTypes` no preview picture will be shown
             await Share.shareFilesWithResult([
               "${cacheDir.path}/$noExtensionJPEG",
+            ], mimeTypes: [
+              "image/JPEG"
             ]);
 
             //* PDF document (no image)
