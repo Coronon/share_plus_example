@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:share_plus/share_plus.dart';
 
-const String normalJPEG1 = "test_normalJPEG_1.jpg";
+const String normalJPEG1 = "test_normalJPEG_1.png";
 const String normalJPEG2 = "test_normalJPEG_2.jpg";
 const String noExtensionJPEG = "test_noExtensionJPEG";
 const String pdfDocument = "test_pdfDocument.pdf";
@@ -55,36 +55,35 @@ class HomePage extends StatelessWidget {
         title: const Text("Flutter Share Tests"),
       ),
       body: Center(
-        child: ElevatedButton(
-          child: const Text("Share"),
-          onPressed: () async {
-            Directory cacheDir = await getTemporaryDirectory();
-
-            //* Single image
-            await Share.shareFilesWithResult([
-              "${cacheDir.path}/$normalJPEG1",
-            ]);
-
-            //* Multiple images
-            // Yes, the preview stacks the two previews - look closely
-            await Share.shareFilesWithResult([
-              "${cacheDir.path}/$normalJPEG1",
-              "${cacheDir.path}/$normalJPEG2",
-            ]);
-
-            //* No Extension
-            // If you comment out the `mimeTypes` no preview picture will be shown
-            await Share.shareFilesWithResult([
-              "${cacheDir.path}/$noExtensionJPEG",
-            ], mimeTypes: [
-              "image/JPEG"
-            ]);
-
-            //* PDF document (no image)
-            await Share.shareFilesWithResult([
-              "${cacheDir.path}/$pdfDocument",
-            ]);
-          },
+        child: Column(
+          mainAxisSize: MainAxisSize.max,
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            ElevatedButton(
+              child: const Text("Share single image"),
+              onPressed: () async {
+                await shareSingleImage();
+              },
+            ),
+            ElevatedButton(
+              child: const Text("Share multiple images"),
+              onPressed: () async {
+                await shareMultipleImages();
+              },
+            ),
+            ElevatedButton(
+              child: const Text("Share without extension"),
+              onPressed: () async {
+                await shareNoExtension();
+              },
+            ),
+            ElevatedButton(
+              child: const Text("Share PDF document"),
+              onPressed: () async {
+                await sharePdfDocument();
+              },
+            ),
+          ],
         ),
       ),
     );
@@ -101,4 +100,41 @@ Future<File> downloadFile(String url, String filename) async {
   await file.create(recursive: true);
   await file.writeAsBytes(bytes);
   return file;
+}
+
+//* Single image
+Future<void> shareSingleImage() async {
+  Directory cacheDir = await getTemporaryDirectory();
+  await Share.shareFilesWithResult([
+    "${cacheDir.path}/$normalJPEG1",
+  ]);
+}
+
+//* Multiple images
+// Yes, the preview stacks the two previews - look closely
+Future<void> shareMultipleImages() async {
+  Directory cacheDir = await getTemporaryDirectory();
+  await Share.shareFilesWithResult([
+    "${cacheDir.path}/$normalJPEG1",
+    "${cacheDir.path}/$normalJPEG2",
+  ]);
+}
+
+//* No Extension
+// If you comment out the `mimeTypes` no preview picture will be shown
+Future<void> shareNoExtension() async {
+  Directory cacheDir = await getTemporaryDirectory();
+  await Share.shareFilesWithResult([
+    "${cacheDir.path}/$noExtensionJPEG",
+  ], mimeTypes: [
+    "image/JPEG"
+  ]);
+}
+
+//* PDF document (no image)
+Future<void> sharePdfDocument() async {
+  Directory cacheDir = await getTemporaryDirectory();
+  await Share.shareFilesWithResult([
+    "${cacheDir.path}/$pdfDocument",
+  ]);
 }
