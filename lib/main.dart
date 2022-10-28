@@ -60,6 +60,12 @@ class HomePage extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             ElevatedButton(
+              child: const Text("Share plain text"),
+              onPressed: () async {
+                await sharePlainText();
+              },
+            ),
+            ElevatedButton(
               child: const Text("Share single image"),
               onPressed: () async {
                 await shareSingleImage();
@@ -102,19 +108,40 @@ Future<File> downloadFile(String url, String filename) async {
   return file;
 }
 
+void printResult(ShareResult result) {
+  print('----- RESULT -----');
+  print('Status: ${result.status}');
+  print('Raw:    ${result.raw}');
+  print('------------------');
+}
+
+Future<void> shareFilesWithResult(List<String> paths, {List<String> mimeTypes = const []}) async {
+  final res = await Share.shareFilesWithResult(paths, mimeTypes: mimeTypes);
+  printResult(res);
+}
+
+//* Plaintext
+Future<void> sharePlainText() async {
+  final text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent eget ante molestie, euismod felis et.";
+  final subject = "Vestibulum velit magna, malesuada eu. ";
+  final res = await Share.shareWithResult(text, subject: subject);
+  printResult(res);
+}
+
 //* Single image
 Future<void> shareSingleImage() async {
   Directory cacheDir = await getTemporaryDirectory();
-  await Share.shareFilesWithResult([
+  await shareFilesWithResult([
     "${cacheDir.path}/$normalJPEG1",
   ]);
+
 }
 
 //* Multiple images
 // Yes, the preview stacks the two previews - look closely
 Future<void> shareMultipleImages() async {
   Directory cacheDir = await getTemporaryDirectory();
-  await Share.shareFilesWithResult([
+  await shareFilesWithResult([
     "${cacheDir.path}/$normalJPEG1",
     "${cacheDir.path}/$normalJPEG2",
   ]);
@@ -124,7 +151,7 @@ Future<void> shareMultipleImages() async {
 // If you comment out the `mimeTypes` no preview picture will be shown
 Future<void> shareNoExtension() async {
   Directory cacheDir = await getTemporaryDirectory();
-  await Share.shareFilesWithResult([
+  await shareFilesWithResult([
     "${cacheDir.path}/$noExtensionJPEG",
   ], mimeTypes: [
     "image/JPEG"
@@ -134,7 +161,7 @@ Future<void> shareNoExtension() async {
 //* PDF document (no image)
 Future<void> sharePdfDocument() async {
   Directory cacheDir = await getTemporaryDirectory();
-  await Share.shareFilesWithResult([
+  await shareFilesWithResult([
     "${cacheDir.path}/$pdfDocument",
   ]);
 }
