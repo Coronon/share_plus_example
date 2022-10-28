@@ -1,3 +1,5 @@
+// ignore_for_file: avoid_print, deprecated_member_use
+
 import 'dart:io';
 
 import 'package:flutter/foundation.dart';
@@ -122,8 +124,8 @@ Future<void> shareFilesWithResult(List<String> paths, {List<String> mimeTypes = 
 
 //* Plaintext
 Future<void> sharePlainText() async {
-  final text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent eget ante molestie, euismod felis et.";
-  final subject = "Vestibulum velit magna, malesuada eu. ";
+  const text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent eget ante molestie, euismod felis et.";
+  const subject = "Vestibulum velit magna, malesuada eu. ";
   final res = await Share.shareWithResult(text, subject: subject);
   printResult(res);
 }
