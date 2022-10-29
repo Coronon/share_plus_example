@@ -36,12 +36,12 @@ dependency_overrides:
   share_plus:
     git:
       url: https://github.com/Coronon/plus_plugins
-      ref: eee78eafc4324509470cfdfb6b872f443706b5a0
+      ref: 488a27c5a6ca2cadb1a27591b5c17a1986cbd8b1
       path: packages/share_plus/share_plus
   share_plus_platform_interface:
     git:
       url: https://github.com/Coronon/plus_plugins
-      ref: eee78eafc4324509470cfdfb6b872f443706b5a0
+      ref: 488a27c5a6ca2cadb1a27591b5c17a1986cbd8b1
       path: packages/share_plus/share_plus_platform_interface
 
 # dependency_overrides:
